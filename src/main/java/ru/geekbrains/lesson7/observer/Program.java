@@ -27,9 +27,9 @@ public class Program {
         jobAgency.registerObserver(kuznecov);
 
         for (int i = 0; i < 3; i++){
-            geekBrains.needEmployee(50000);
-            google.needEmployee(60000);
-            yandex.needEmployee(10000);
+            geekBrains.needEmployee(Vakancy.junior);
+            google.needEmployee(Vakancy.senior);
+            yandex.needEmployee(Vakancy.middle);
         }
     }
 

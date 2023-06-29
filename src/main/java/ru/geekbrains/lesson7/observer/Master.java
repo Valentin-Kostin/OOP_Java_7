@@ -10,21 +10,24 @@ public class Master implements Observer {
 
     private double minSalary;
 
+    private Vakancy myaVakancy;
+
     public Master(String name) {
         this.name = name;
         minSalary = random.nextDouble(60000, 80000);
+        myaVakancy = Vakancy.senior;
     }
 
     @Override
-    public void receiveOffer(String companyName, double salary) {
-        if (minSalary <= salary){
-            System.out.printf("Рабочий %s (%f) >>> Мне нужна эта работа! [%s - %f]\n",
-                    name, minSalary, companyName, salary);
+    public void receiveOffer(String companyName, double salary, Vakancy vakancy) {
+        if (minSalary <= salary && myaVakancy == vakancy){
+            System.out.printf("Рабочий %s(%s) (%f) >>> Мне нужна эта работа! [%s(%s) - %f]\n",
+                    name, myaVakancy, minSalary, companyName, vakancy, salary);
             minSalary = salary;
         }
         else {
-            System.out.printf("Рабочий %s >>> Я найду работу получше (%f)! [%s - %f]\n",
-                    name, minSalary, companyName, salary);
+            System.out.printf("Рабочий %s(%s) >>> Я найду работу получше (%f)! [%s(%s) - %f]\n",
+                    name, myaVakancy, minSalary, companyName, vakancy, salary);
         }
     }
 }
